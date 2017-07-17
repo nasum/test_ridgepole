@@ -1,0 +1,14 @@
+version: "2"
+services:
+  storage:
+    image: busybox
+    volumes:
+      - /var/lib/postgresql/data
+  mysql:
+    image: mysql:8.0.1
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "3306:3306"
+    volumes_from:
+      - storage
